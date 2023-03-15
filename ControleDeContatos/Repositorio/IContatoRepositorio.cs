@@ -4,14 +4,10 @@ namespace ControleDeContatos.Repositorio
 {
     public interface IContatoRepositorio
     {
-        ContatoModel Adicionar(ContatoModel contato);
-
         List<ContatoModel> BuscarTodosContatos();
-
         ContatoModel BuscarPorId(int id);
-
+        ContatoModel Adicionar(ContatoModel contato);
         ContatoModel Atualizar(ContatoModel contato);
-
         bool Apagar(int id);
     }
 }
