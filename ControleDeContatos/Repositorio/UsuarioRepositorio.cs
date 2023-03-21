@@ -20,6 +20,13 @@ namespace ControleDeContatos.Repositorio
         {
             return _context.Usuarios.FirstOrDefault(x => x.Id == id);
         }
+
+
+        public UsuarioModel BuscarPorEmailELogin(string email, string login)
+        {
+            return _context.Usuarios.FirstOrDefault(x => x.Email.ToUpper() == email.ToUpper() && x.Login.ToUpper() == login.ToUpper());
+        }
+
         public List<UsuarioModel> BuscarTodosContatos()
         {
             return _context.Usuarios.ToList();
@@ -28,6 +35,7 @@ namespace ControleDeContatos.Repositorio
         public UsuarioModel Adicionar(UsuarioModel usuario)
         {
             usuario.DataCadastro = DateTime.Now;
+            usuario.SetSenhaHash();
             _context.Usuarios.Add(usuario);
             _context.SaveChanges();
             return usuario; 
