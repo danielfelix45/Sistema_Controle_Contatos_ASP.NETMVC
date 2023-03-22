@@ -6,7 +6,7 @@
 $(document).ready(function () {
     setTimeout(function () {
         $('.alert').hide('hide')
-    }, 2000);
+    }, 4000);
 
     getDataTable('#table-contatos');
     getDataTable('#table-usuarios');

@@ -45,17 +45,17 @@ namespace ControleDeContatos.Controllers
                 bool apagado = _usuarioRepositorio.Apagar(id);
                 if (apagado)
                 {
-                    TempData["MenssagemSucesso"] = "Usuário apagado com sucesso!";
+                    TempData["MensagemSucesso"] = "Usuário apagado com sucesso!";
                 }
                 else
                 {
-                    TempData["MenssagemErro"] = "Ops, não conseguimos apagar o usuário!";
+                    TempData["MensagemErro"] = "Ops, não conseguimos apagar o usuário!";
                 }
                 return RedirectToAction("Index");
             }
             catch (Exception e)
             {
-                TempData["MenssagemErro"] = $"Ops, não conseguimos apagar o usuário, tente novamente, detalhe do erro: {e.Message}";
+                TempData["MensagemErro"] = $"Ops, não conseguimos apagar o usuário, tente novamente, detalhe do erro: {e.Message}";
                 return RedirectToAction("Index");
             }
         }
@@ -68,14 +68,14 @@ namespace ControleDeContatos.Controllers
                 if (ModelState.IsValid)
                 {
                     _usuarioRepositorio.Adicionar(usuario);
-                    TempData["MenssagemSucesso"] = "Usuário cadastrado com sucesso!";
+                    TempData["MensagemSucesso"] = "Usuário cadastrado com sucesso!";
                     return RedirectToAction("Index");
                 }
                 return View(usuario);
             }
             catch (Exception e)
             {
-                TempData["MenssagemErro"] = $"Ops, não conseguimos cadastrar o usuário, tente novamente, detalhe do erro:{e.Message}";
+                TempData["MensagemErro"] = $"Ops, não conseguimos cadastrar o usuário, tente novamente, detalhe do erro:{e.Message}";
                 return RedirectToAction("Index");
             }
         }
@@ -98,14 +98,14 @@ namespace ControleDeContatos.Controllers
                         Perfil = usuarioSemSenhaModel.Perfil
                     };
                     usuario = _usuarioRepositorio.Atualizar(usuario);
-                    TempData["MenssagemSucesso"] = "Usuário alterado com sucesso!";
+                    TempData["MensagemSucesso"] = "Usuário alterado com sucesso!";
                     return RedirectToAction("Index");
                 }
                 return View(usuario);
             }
             catch (Exception e)
             {
-                TempData["MenssagemErro"] = $"Ops, não conseguimos alterar o usuário, tente novamente, detalhe do erro:{e.Message}";
+                TempData["MensagemErro"] = $"Ops, não conseguimos alterar o usuário, tente novamente, detalhe do erro:{e.Message}";
                 return RedirectToAction("Index");
             }
         }
