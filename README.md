@@ -24,4 +24,3 @@
   * Alterar senha.
   * Filtro (foi usado Filter MVC) onde só usuários *Admin* podem acessar, cadastrar, editar e deletar usuários.
   * Relação entre as tabelas de contatos e usuários, onde só aparecem os contatos cadastrados pelo usuário logado.
-
