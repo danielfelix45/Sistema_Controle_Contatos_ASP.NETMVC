@@ -11,17 +11,17 @@ namespace ControleDeContatos.Repositorio
             _context = bancoContext;
         }
 
-        public UsuarioModel BuscarPorLogin(string login)
+        public UsuarioModel? BuscarPorLogin(string login)
         {
             return _context.Usuarios.FirstOrDefault(x => x.Login.ToUpper() == login.ToUpper());
         }
 
-        public UsuarioModel BuscarPorEmailELogin(string email, string login)
+        public UsuarioModel? BuscarPorEmailELogin(string email, string login)
         {
             return _context.Usuarios.FirstOrDefault(x => x.Email.ToUpper() == email.ToUpper() && x.Login.ToUpper() == login.ToUpper());
         }
 
-        public UsuarioModel BuscarPorId(int id)
+        public UsuarioModel? BuscarPorId(int id)
         {
             return _context.Usuarios.FirstOrDefault(x => x.Id == id);
         }
@@ -42,7 +42,7 @@ namespace ControleDeContatos.Repositorio
 
         public UsuarioModel Atualizar(UsuarioModel usuario)
         {
-            UsuarioModel usuarioDB = BuscarPorId(usuario.Id);
+            UsuarioModel? usuarioDB = BuscarPorId(usuario.Id);
 
             if (usuarioDB == null) throw new Exception("Houve um erro na atualização do usuário!");
 
@@ -60,7 +60,7 @@ namespace ControleDeContatos.Repositorio
 
         public UsuarioModel AlterarSenha(AlterarSenhaModel alterarSenhaModel)
         {
-            UsuarioModel usuarioDB = BuscarPorId(alterarSenhaModel.Id);
+            UsuarioModel? usuarioDB = BuscarPorId(alterarSenhaModel.Id);
             if (usuarioDB == null) throw new Exception("Houve um erro na atualização da senha, usuário não encontrado!");
             if (!usuarioDB.SenhaValida(alterarSenhaModel.SenhaAtual)) throw new Exception("Senha atual não confere!");
             if (usuarioDB.SenhaValida(alterarSenhaModel.NovaSenha)) throw new Exception("Nova senha deve ser diferente da senha atual");
@@ -75,7 +75,7 @@ namespace ControleDeContatos.Repositorio
 
         public bool Apagar(int id)
         {
-            UsuarioModel usuarioDB = BuscarPorId(id);
+            UsuarioModel? usuarioDB = BuscarPorId(id);
 
             if (usuarioDB == null) throw new Exception("Houve um erro ao apagar o usuário!");
 

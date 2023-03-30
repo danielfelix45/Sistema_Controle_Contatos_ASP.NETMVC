@@ -27,13 +27,13 @@ namespace ControleDeContatos.Controllers
 
         public IActionResult Editar(int id)
         {
-            UsuarioModel usuario = _usuarioRepositorio.BuscarPorId(id);
+            UsuarioModel? usuario = _usuarioRepositorio.BuscarPorId(id);
             return View(usuario);
         }
 
         public IActionResult ConfirmApagar(int id)
         {
-            UsuarioModel usuario = _usuarioRepositorio.BuscarPorId(id);
+            UsuarioModel? usuario = _usuarioRepositorio.BuscarPorId(id);
             return View(usuario);
         }
 

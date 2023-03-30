@@ -14,7 +14,7 @@ namespace ControleDeContatos.Helper
 
         public UsuarioModel? BuscarSessaoUsuario()
         {
-            string sessaoUsuario = _httpContext.HttpContext.Session.GetString("SessaoUsuarioLogado");
+            string? sessaoUsuario = _httpContext.HttpContext?.Session.GetString("SessaoUsuarioLogado");
             if (string.IsNullOrEmpty(sessaoUsuario)) return null;
             return JsonConvert.DeserializeObject<UsuarioModel>(sessaoUsuario);
         }
@@ -22,12 +22,12 @@ namespace ControleDeContatos.Helper
         public void CriarSessaoUsuario(UsuarioModel usuario)
         {
             string valor = JsonConvert.SerializeObject(usuario);
-            _httpContext.HttpContext.Session.SetString("SessaoUsuarioLogado", valor);
+            _httpContext.HttpContext?.Session.SetString("SessaoUsuarioLogado", valor);
         }
 
         public void RemoverSessaoUsuario()
         {
-            _httpContext.HttpContext.Session.Remove("SessaoUsuarioLogado");
+            _httpContext.HttpContext?.Session.Remove("SessaoUsuarioLogado");
         }
     }
 }
